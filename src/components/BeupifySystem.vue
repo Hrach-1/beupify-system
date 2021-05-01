@@ -1,54 +1,43 @@
 <template>
   <div>
-    <canvas id="canvas" ref="canvas"></canvas>
+    <div class="thumbnail">
+<!--      <img src="../../public/expanded.svg" alt="beupify_system">-->
+    </div>
+    <canvas class="canvas" ref="canvas"></canvas>
   </div>
 </template>
 
 <script>
-import point from '../assets/point.svg'
-import CurveAnimator from "../utils/curve_animator";
-
-
-// //
-//
-// //
+import CA from "../utils/curve_animator_upgraded";
 
 
 export default {
   name: "BeupifySystem",
   mounted() {
-    const c1_x = 0
-    const c2_x = 1200
+
     const canvas = this.$refs.canvas
-    canvas.width = 1300
-    canvas.height = 376
-    console.log(canvas)
-    let ctx = canvas.getContext('2d');
-    {
-      const curve = new CurveAnimator([0, 188], [1200, 188], [c1_x, 0], [c2_x, 0]);
-      curve.animate(7, function (point, angle) {
-        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        ctx.arc(point.x + 20, point.y + 20, 5, 0, 2 * Math.PI);
-        ctx.stroke()
-      });
-    }
-    // {
-    //   const curve = new CurveAnimator([1200, 188], [0, 188], [c2_x, 376], [c1_x, 376]);
-    //   curve.animate(7, function (point, angle) {
-    //     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    //     ctx.fillRect(point.x + 20, point.y + 20, 20, 20);
-    //     ctx.arc(point.x + 20, point.y + 20, 5, 0, 2 * Math.PI);
-    //     ctx.stroke()
-    //   });
-    // }
+    canvas.width = 1200
+    canvas.height = 366
+
+    const ca = new CA(canvas)
+    ca.animate()
   }
 }
 </script>
 
 <style scoped>
-#canvas {
-  max-width: 1300px;
-  max-height: 376px;
+.canvas {
+  width: 1200px;
+  height: 366px;
+  border:1px solid black;
+}
+
+.thumbnail img {
+  position: absolute;
+  top:10px;
+  left: 10px;
+  max-width: 1200px;
+  max-height: 366px;
   width: 100%;
   height: 100%;
 }

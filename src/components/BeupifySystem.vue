@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background-color:#1E1939; ">
     <div class="thumbnail">
 <!--      <img src="../../public/expanded.svg" alt="beupify_system">-->
     </div>
@@ -16,8 +16,8 @@ export default {
   mounted() {
 
     const canvas = this.$refs.canvas
-    canvas.width = 1200
-    canvas.height = 366
+    canvas.width = 1300
+    canvas.height = 400
 
     const ca = new CA(canvas)
     ca.animate()
@@ -27,9 +27,9 @@ export default {
 
 <style scoped>
 .canvas {
-  width: 1200px;
-  height: 366px;
-  border:1px solid black;
+  width: 1300px;
+  height: 400px;
+  /*border:1px solid black;*/
 }
 
 .thumbnail img {

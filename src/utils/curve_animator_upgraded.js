@@ -18,13 +18,19 @@ export default class CA {
         wordpress:11
       },
       speed: {
-        first: 150,
-        second: 150,
-        third: 150
+        first: 6,
+        second: 6,
+        third: 6
       }
     }
-    this.w = 1200
-    this.h = 366
+    // console.log('canvas width : ', this.c.height );
+    console.log('canvas : ', this.c.style );
+
+    // this.w = 1280
+    // this.h = 476
+    //
+    // this.c.width = this.w
+    // this.c.height = this.h
 
     this.rw = 1300
     this.rh = 400
@@ -36,8 +42,7 @@ export default class CA {
     this.point = new Image(8, 8)
     this.point.src = '/images/point.svg'
 
-    this.system = new Image(1200, 366)
-    this.system.src = '/images/not_expanded.svg'
+    this.system = ''
 
     this.drupal = new Image( this.iw, this.ih)
     this.drupal.src = '/images/drupal.svg'
@@ -58,6 +63,11 @@ export default class CA {
     this.shopify.src = '/images/shopify.svg'
   }
 
+  set setSystemImg(img) {
+    console.log(img)
+    this.system = img
+  }
+
   update() {
     // 3
     this.opt.angle.drupal += Math.PI * (this.opt.speed.third / 10000)
@@ -73,33 +83,21 @@ export default class CA {
   }
 
   clear() {
-    this.ctx.clearRect(0, 0, this.rw, this.rh)
+    this.ctx.clearRect(0, 0, this.w, this.h)
   }
 
   render() {
     this.ctx.beginPath()
     this.ctx.fillStyle = "#1E1939"
-    this.ctx.fillRect(0, 0, this.rw, this.rh);
-    // this.ctx.arc(
-    //   this.w / 2 + 283 * Math.cos(this.opt.angle),
-    //   this.h / 2 + 75.5 * Math.sin(this.opt.angle),
-    //   5,
-    //   0,
-    //   Math.PI * 2)
-    // this.ctx.arc(
-    //   this.w / 2,
-    //   this.h / 2,
-    //   5,
-    //   0,
-    //   Math.PI * 2)
+    this.ctx.fillRect(0, 0, this.w, this.h);
 
     // System
     this.ctx.drawImage(
       this.system,
-      0,
-      0,
-      1200,
-      366,
+      (this.w - this.system.width)/2,
+      (this.h - this.system.height)/2,
+      this.w - 80,
+      this.h - 100,
     )
 
     // 4
@@ -109,90 +107,90 @@ export default class CA {
     //   this.pointSize,
     //   this.pointSize)
 
-    // 3
-
-    // Drupal
-    this.ctx.drawImage(this.point,
-      this.w / 2 - 4 + 392 * Math.cos(this.opt.angle.drupal),
-      this.h / 2 - 4 + 110 * Math.sin(this.opt.angle.drupal),
-      this.point.width,
-      this.point.height)
-
-    this.ctx.drawImage(this.drupal,
-      this.w / 2 - 75 + 392 * Math.cos(this.opt.angle.drupal),
-      this.h / 2 - 48 - 4 + 110 * Math.sin(this.opt.angle.drupal),
-      this.iw,
-      this.ih)
-
-    // 2
-
-    // Squarespace
-    this.ctx.drawImage(this.point,
-      this.w / 2 - 4 + 496 * Math.cos(this.opt.angle.squarespace),
-      this.h / 2 - 4 + 147 * Math.sin(this.opt.angle.squarespace),
-      this.point.width,
-      this.point.height)
-
-    this.ctx.drawImage(this.squarespace,
-      this.w / 2 - 75 + 496 * Math.cos(this.opt.angle.squarespace),
-      this.h / 2 - 48 - 4 + 147 * Math.sin(this.opt.angle.squarespace),
-      this.iw,
-      this.ih)
-
-    // Wix
-    this.ctx.drawImage(this.point,
-      this.w / 2 - 4 + 496 * Math.cos(this.opt.angle.wix),
-      this.h / 2 - 4 + 147 * Math.sin(this.opt.angle.wix),
-      this.point.width,
-      this.point.height)
-
-    this.ctx.drawImage(this.wix,
-      this.w / 2 - 75 + 496 * Math.cos(this.opt.angle.wix),
-      this.h / 2 - 48 - 4 + 147 * Math.sin(this.opt.angle.wix),
-      this.iw,
-      this.ih)
-
-
-    // 1
-
-    // Shopify
-    this.ctx.drawImage(this.point,
-      this.w / 2 - 4 + 598 * Math.cos(this.opt.angle.shopify),
-      this.h / 2 - 4 + 184 * Math.sin(this.opt.angle.shopify),
-      this.point.width,
-      this.point.height)
-
-    this.ctx.drawImage(this.shopify,
-      this.w / 2 - 75 + 598 * Math.cos(this.opt.angle.shopify),
-      this.h / 2 - 48 - 4 + 184 * Math.sin(this.opt.angle.shopify),
-      this.iw,
-      this.ih)
-
-    // Wordpress
-    this.ctx.drawImage(this.point,
-      this.w / 2 - 4 + 598 * Math.cos(this.opt.angle.wordpress),
-      this.h / 2 - 4 + 184 * Math.sin(this.opt.angle.wordpress),
-      this.point.width,
-      this.point.height)
-
-    this.ctx.drawImage(this.wordpress,
-      this.w / 2 - 75 + 598 * Math.cos(this.opt.angle.wordpress),
-      this.h / 2 - 48 - 4 + 184 * Math.sin(this.opt.angle.wordpress),
-      this.iw,
-      this.ih)
-
-    // Weebly
-    this.ctx.drawImage(this.point,
-      this.w / 2 - 4 + 598 * Math.cos(this.opt.angle.weebly),
-      this.h / 2 - 4 + 184 * Math.sin(this.opt.angle.weebly),
-      this.point.width,
-      this.point.height)
-
-    this.ctx.drawImage(this.weebly,
-      this.w / 2 - 75 + 598 * Math.cos(this.opt.angle.weebly),
-      this.h / 2 - 48 - 4 + 184 * Math.sin(this.opt.angle.weebly),
-      this.iw,
-      this.ih)
+    // // 3
+    //
+    // // Drupal
+    // this.ctx.drawImage(this.point,
+    //   this.w / 2 - 4 + 392 * Math.cos(this.opt.angle.drupal),
+    //   this.h / 2 - 4 + 110 * Math.sin(this.opt.angle.drupal),
+    //   this.point.width,
+    //   this.point.height)
+    //
+    // this.ctx.drawImage(this.drupal,
+    //   this.w / 2 - 75 + 392 * Math.cos(this.opt.angle.drupal),
+    //   this.h / 2 - 48 - 4 + 110 * Math.sin(this.opt.angle.drupal),
+    //   this.iw,
+    //   this.ih)
+    //
+    // // 2
+    //
+    // // Squarespace
+    // this.ctx.drawImage(this.point,
+    //   this.w / 2 - 4 + 496 * Math.cos(this.opt.angle.squarespace),
+    //   this.h / 2 - 4 + 147 * Math.sin(this.opt.angle.squarespace),
+    //   this.point.width,
+    //   this.point.height)
+    //
+    // this.ctx.drawImage(this.squarespace,
+    //   this.w / 2 - 75 + 496 * Math.cos(this.opt.angle.squarespace),
+    //   this.h / 2 - 48 - 4 + 147 * Math.sin(this.opt.angle.squarespace),
+    //   this.iw,
+    //   this.ih)
+    //
+    // // Wix
+    // this.ctx.drawImage(this.point,
+    //   this.w / 2 - 4 + 496 * Math.cos(this.opt.angle.wix),
+    //   this.h / 2 - 4 + 147 * Math.sin(this.opt.angle.wix),
+    //   this.point.width,
+    //   this.point.height)
+    //
+    // this.ctx.drawImage(this.wix,
+    //   this.w / 2 - 75 + 496 * Math.cos(this.opt.angle.wix),
+    //   this.h / 2 - 48 - 4 + 147 * Math.sin(this.opt.angle.wix),
+    //   this.iw,
+    //   this.ih)
+    //
+    //
+    // // 1
+    //
+    // // Shopify
+    // this.ctx.drawImage(this.point,
+    //   this.w / 2 - 4 + 598 * Math.cos(this.opt.angle.shopify),
+    //   this.h / 2 - 4 + 184 * Math.sin(this.opt.angle.shopify),
+    //   this.point.width,
+    //   this.point.height)
+    //
+    // this.ctx.drawImage(this.shopify,
+    //   this.w / 2 - 75 + 598 * Math.cos(this.opt.angle.shopify),
+    //   this.h / 2 - 48 - 4 + 184 * Math.sin(this.opt.angle.shopify),
+    //   this.iw,
+    //   this.ih)
+    //
+    // // Wordpress
+    // this.ctx.drawImage(this.point,
+    //   this.w / 2 - 4 + 598 * Math.cos(this.opt.angle.wordpress),
+    //   this.h / 2 - 4 + 184 * Math.sin(this.opt.angle.wordpress),
+    //   this.point.width,
+    //   this.point.height)
+    //
+    // this.ctx.drawImage(this.wordpress,
+    //   this.w / 2 - 75 + 598 * Math.cos(this.opt.angle.wordpress),
+    //   this.h / 2 - 48 - 4 + 184 * Math.sin(this.opt.angle.wordpress),
+    //   this.iw,
+    //   this.ih)
+    //
+    // // Weebly
+    // this.ctx.drawImage(this.point,
+    //   this.w / 2 - 4 + 598 * Math.cos(this.opt.angle.weebly),
+    //   this.h / 2 - 4 + 184 * Math.sin(this.opt.angle.weebly),
+    //   this.point.width,
+    //   this.point.height)
+    //
+    // this.ctx.drawImage(this.weebly,
+    //   this.w / 2 - 75 + 598 * Math.cos(this.opt.angle.weebly),
+    //   this.h / 2 - 48 - 4 + 184 * Math.sin(this.opt.angle.weebly),
+    //   this.iw,
+    //   this.ih)
 
     this.ctx.closePath()
 

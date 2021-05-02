@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div class="thumbnail">
-<!--      <img src="../../public/expanded.svg" alt="beupify_system">-->
-    </div>
+  <div class="canvas_container">
     <canvas class="canvas" ref="canvas"></canvas>
   </div>
 </template>
@@ -16,9 +13,9 @@ export default {
   data: () => ({
     ca: '',
     l: '/images/beupify_system_l.svg',
-    m: '/images/beupify_system_m.png',
-    s: '/images/beupify_system_s.png',
-    xs: '/images/beupify_system_xs.png'
+    m: '/images/beupify_system_m.svg',
+    s: '/images/beupify_system_s.svg',
+    xs: '/images/beupify_system_xs.svg'
   }),
   mounted() {
     const w = window.innerWidth
@@ -26,34 +23,29 @@ export default {
     window.addEventListener("resize", this.canvasResize);
     const canvas = this.$refs.canvas
     let img
-    this.ca = new CA(canvas)
+    this.ca = new CA(canvas, 1280, 440)
     if (w >= 1280) {
-      canvas.width = 1280;
-      canvas.height = 416;
+      this.ca.setCanvas = {w: 1280, h: 440}
       img = new Image(1200, 376)
       img.src = this.l
     }
     else if (w >= 1024 ){
-      canvas.width =  1000;
-      canvas.height = 324;
+      this.ca.setCanvas = {w, h: Math.floor((w-80)/(944/296))+64}
       img = new Image(944, 296)
       img.src = this.m
     }
     else if (w >= 768 ) {
-      canvas.width = 0;
-      canvas.height = 0;
+      this.ca.setCanvas = {w, h: Math.floor((w-32)/(736/232))+40}
       img = new Image(736, 232)
       img.src = this.s
     }
-    else if (w >= 360 ) {
-      canvas.width = ;
-      canvas.height = ;
+    else {
+      this.ca.setCanvas = {w, h: Math.floor((w-32)/(328/128))+40}
       img = new Image(328, 128)
       img.src = this.xs
     }
     this.ca.setSystemImg = img
     this.ca.animate()
-    console.log('Img: ', new Image(1200, 376).src = this.l)
   },
   unmounted() {
     window.removeEventListener("resize", this.canvasResize);
@@ -63,26 +55,22 @@ export default {
       const w = e.target.innerWidth
       let img
       if (w >= 1280) {
-        canvas.width = ;
-        canvas.height = ;
+        this.ca.setCanvas = {w: 1280, h: 534}
         img = new Image(1200, 376)
         img.src = this.l
       }
       else if (w >= 1024 ){
-        canvas.width = ;
-        canvas.height = ;
+        this.ca.setCanvas = {w, h: Math.floor((w-80)/(944/296))+56}
         img = new Image(944, 296)
         img.src = this.m
       }
       else if (w >= 768 ) {
-        canvas.width = ;
-        canvas.height = ;
+        this.ca.setCanvas = {w, h: Math.floor((w-32)/(736/232))+32}
         img = new Image(736, 232)
         img.src = this.s
       }
-      else if (w >= 360 ) {
-        canvas.width = ;
-        canvas.height = ;
+      else {
+        this.ca.setCanvas = {w, h: Math.floor((w-32)/(328/128))+32}
         img = new Image(328, 128)
         img.src = this.xs
       }
@@ -93,6 +81,11 @@ export default {
 </script>
 
 <style scoped>
+.canvas_container *{
+  margin: 0;
+  padding: 0;
+}
+
 .canvas {
   max-width: 1280px;
   width:  100%;

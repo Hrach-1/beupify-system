@@ -1,5 +1,5 @@
 export default class CA {
-  constructor(canvas) {
+  constructor(canvas, w, h) {
     this.c = canvas
     this.ctx = this.c.getContext('2d')
     this.opt = {
@@ -23,17 +23,13 @@ export default class CA {
         third: 6
       }
     }
-    // console.log('canvas width : ', this.c.height );
-    console.log('canvas : ', this.c.style );
-
-    // this.w = 1280
-    // this.h = 476
-    //
-    // this.c.width = this.w
-    // this.c.height = this.h
-
-    this.rw = 1300
-    this.rh = 400
+    console.log('canvas : ', this.c );
+    this.c.width = w
+    this.c.height = h
+    console.log('Canvas Width: ', this.c.width, ' Canvas Height: ', this.c.height)
+    this.w = this.c.width
+    this.h = this.c.height
+    console.log('Width: ', this.w, ' Height: ', this.h)
 
     this.iw = 150
     this.ih = 48
@@ -68,6 +64,11 @@ export default class CA {
     this.system = img
   }
 
+  set setCanvas({w, h}) {
+    this.c.width = w
+    this.c.height = h
+  }
+
   update() {
     // 3
     this.opt.angle.drupal += Math.PI * (this.opt.speed.third / 10000)
@@ -95,9 +96,11 @@ export default class CA {
     this.ctx.drawImage(
       this.system,
       (this.w - this.system.width)/2,
-      (this.h - this.system.height)/2,
-      this.w - 80,
-      this.h - 100,
+      // 0,
+      // 0,
+      (this.h - this.system.height)-8,
+      this.system.width,
+      this.system.height,
     )
 
     // 4

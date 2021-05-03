@@ -44,8 +44,10 @@ export default {
       canvas.width = w
       canvas.height = h
       this.ca = new CA(canvas, w, h)
-      if (window.innerWidth < 1024) {
-        this.ca.setImageSizes = {w: 74, h: 24}
+      if (window.innerWidth < 1024 && window.innerWidth >= 768) {
+        this.ca.setImageSizes = {w: 90, h: 28}
+      } else if(window.innerWidth < 768) {
+        this.ca.setImageSizes = {w: 76, h: 24}
       } else {
         this.ca.setImageSizes = {w: 150, h: 48}
       }

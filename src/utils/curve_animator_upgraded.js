@@ -6,23 +6,21 @@ export default class CA {
       pts: 0,
       angle: {
         // 3
-        drupal: 0,
+        drupal: -0.4 * Math.PI,
 
         // 2
-        wix: Math.PI,
-
-        shopify: Math.PI * 1.5,
-        weebly: Math.PI * 2,
+        wix: 0.2 * Math.PI,
+        weebly: Math.PI,
+        shopify: -0.65 * Math.PI,
 
         // 1
-        squarespace: Math.PI / 2,
-        wordpress: 11
+        squarespace:  -0.15 * Math.PI,
+        wordpress:  0.7 * Math.PI,
       },
       speed: {
-        first: 10,
-        second: 15,
-        // third: 0.000001,
-        third: 25
+        first: 5,
+        second: 6,
+        third: 7
       }
     }
 
@@ -32,30 +30,27 @@ export default class CA {
     this.iw = 150
     this.ih = 48
 
-    this.siw = 76
-    this.sih = 24
-
     // images
     this.point = new Image(8, 8)
     this.point.src = '/images/point.svg'
 
     this.drupal = new Image(this.iw, this.ih)
-    this.drupal.src = '/images/drupal.svg'
+    this.drupal.src = '/images/drupal.png'
 
     this.squarespace = new Image(this.iw, this.ih)
-    this.squarespace.src = '/images/squarespace.svg'
+    this.squarespace.src = '/images/squarespace.png'
 
     this.wix = new Image(this.iw, this.ih)
-    this.wix.src = '/images/wix.svg'
+    this.wix.src = '/images/wix.png'
 
     this.wordpress = new Image(this.iw, this.ih)
-    this.wordpress.src = '/images/wordpress.svg'
+    this.wordpress.src = '/images/wordpress.png'
 
     this.weebly = new Image(this.iw, this.ih)
-    this.weebly.src = '/images/weebly.svg'
+    this.weebly.src = '/images/weebly.png'
 
     this.shopify = new Image(this.iw, this.ih)
-    this.shopify.src = '/images/shopify.svg'
+    this.shopify.src = '/images/shopify.png'
   }
 
   set setCanvas({w, h}) {
@@ -746,7 +741,7 @@ export default class CA {
         this.point.width,
         this.point.height)
 
-      this.ctx.drawImage(this.point,
+      this.ctx.drawImage(this.drupal,
         -this.iw / 2 +
         this.w / 2 - ((5 + (391 * Math.cos(this.opt.angle.drupal))) * ((this.w - 32) / 1200)),
         -(this.ih + 4) +

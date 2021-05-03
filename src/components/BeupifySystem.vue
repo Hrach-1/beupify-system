@@ -22,7 +22,7 @@ export default {
   mounted() {
     // BS
     const bs = this.$refs.bs
-    bs.src = this.l
+    bs.src = this.xs
 
     const cc = this.$refs.cc
 
@@ -40,7 +40,7 @@ export default {
       canvas.height = h
       this.ca = new CA(canvas, w, h)
       this.ca.animate()
-    }, 0)
+    }, 10)
 
     window.addEventListener("resize", this.canvasResize);
 
@@ -83,7 +83,7 @@ export default {
         } else {
           this.ca.setCanvas = {w: cc.offsetWidth  , h:cc.offsetHeight}
         }
-      }, 0)
+      }, 10)
     }
 
     /*canvasResize(e) {*/

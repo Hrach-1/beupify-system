@@ -1,7 +1,7 @@
 <template>
   <div class="canvas-wrapper">
     <div class="canvas-container" ref="cc" id="cc">
-      <img src="#" alt="bs" ref="bs">
+      <img src="#" alt="bs" ref="bs" id="bs">
       <canvas class="canvas" ref="canvas"></canvas>
     </div>
   </div>
@@ -26,6 +26,12 @@ export default {
 
     const cc = this.$refs.cc
 
+    if (window.innerWidth <768) {
+      bs.src = this.xs
+    } else {
+      bs.src = this.l
+    }
+
     setTimeout(() => {
       let w,h
       if (window.innerWidth < 1280) {
@@ -40,7 +46,7 @@ export default {
       canvas.height = h
       this.ca = new CA(canvas, w, h)
       this.ca.animate()
-    }, 10)
+    }, 50)
 
     window.addEventListener("resize", this.canvasResize);
 
@@ -77,13 +83,19 @@ export default {
       // console.log(this.$refs.cc)
       // console.log('======================')
       setTimeout(() => {
+        const bs = document.querySelector('#bs')
         const cc = document.querySelector('#cc')
         if (window.innerWidth < 1280) {
           this.ca.setCanvas = {w: window.innerWidth - 2, h:cc.offsetHeight}
         } else {
           this.ca.setCanvas = {w: cc.offsetWidth  , h:cc.offsetHeight}
         }
-      }, 10)
+        if (window.innerWidth <768) {
+          bs.src = this.xs
+        } else {
+          bs.src = this.l
+        }
+      }, 50)
     }
 
     /*canvasResize(e) {*/

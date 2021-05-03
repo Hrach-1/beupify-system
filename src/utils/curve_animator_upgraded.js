@@ -475,11 +475,11 @@ export default class CA {
     } else if (this.w >= 768) {
 
       // 1
-      // this.ctx.drawImage(this.point,
-      //   this.w / 2 - ((5 + (393 * Math.cos(this.opt.angle.drupal))) * ((this.w - 32) / 1200)),
-      //   (((this.h-38) / 2 ) + 32) + ((-7 + 114* Math.sin(this.opt.angle.drupal)) * ((this.h-38) / 376)),
-      //   this.point.width,
-      //   this.point.height)
+      this.ctx.drawImage(this.point,
+        this.w / 2 - ((5 + (393 * Math.cos(this.opt.angle.drupal))) * ((this.w - 32) / 1200)),
+        (((this.h-38) / 2 ) + 32) + ((-7 + 114* Math.sin(this.opt.angle.drupal)) * ((this.h-38) / 376)),
+        this.point.width,
+        this.point.height)
 
       this.ctx.drawImage(this.point,
         this.w / 2 - ((5 + (393 * Math.cos(this.opt.angle.wix))) * ((this.w - 32) / 1200)),

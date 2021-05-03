@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import CA from "../utils/curve_animator_upgraded";
+import CA from "../utils/beupify_system_animation";
 
 
 export default {

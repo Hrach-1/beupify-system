@@ -1,0 +1,23 @@
+Images
+./public/images
+
+Animation File
+./src/utils/beupify_system_animation.js
+
+Components File
+./src/components/BeupifySystem.vue
+
+-------------------------------------------------
+
+beupify_system_animation.js  is using  images from ./public/images
+BeupifySystem.vue is using Animation file from ./src/utils/beupify_system_animation.js
+
+During usage check that images and beupify_system_animation.js written with right paths
+
+beupify_system_animation.js imported in file BeupifySystem( line:11 )
+images used in file beupify_system_animation.js( line:34-53 ), change only img.src
+
+
+
+
+

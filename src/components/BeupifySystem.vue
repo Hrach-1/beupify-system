@@ -10,20 +10,15 @@
 <script>
 import CA from "../utils/beupify_system_animation";
 
-
 export default {
   name: "BeupifySystem",
   data: () => ({
     l: '/images/beupify_system_l.svg',
-    m: '/images/beupify_system_m.svg',
-    s: '/images/beupify_system_s.svg',
     xs: '/images/beupify_system_xs.svg'
   }),
   mounted() {
     // BS
     const bs = this.$refs.bs
-    bs.src = this.xs
-
     const cc = this.$refs.cc
 
     if (window.innerWidth < 768) {

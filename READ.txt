@@ -11,12 +11,13 @@ Components File
 
 beupify_system_animation.js  is using  images from ./public/images
 BeupifySystem.vue is using Animation file from ./src/utils/beupify_system_animation.js
+BeupifySystem.vue is using beupify_space_l.svg and beupify_space_xs.svg  file from ./public/images
 
 During usage check that images and beupify_system_animation.js written with right paths
 
 beupify_system_animation.js imported in file BeupifySystem( line:11 )
 images used in file beupify_system_animation.js( line:34-53 ), change only img.src
-
+beupify_space_l.svg and beupify_space_xs.svg used in file BeupifySystem( line:16-17 )
 
 
 

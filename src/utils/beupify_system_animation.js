@@ -14,8 +14,8 @@ export default class CA {
         shopify: -0.65 * Math.PI,
 
         // 1
-        squarespace:  -0.15 * Math.PI,
-        wordpress:  0.7 * Math.PI,
+        squarespace: -0.15 * Math.PI,
+        wordpress: 0.7 * Math.PI,
       },
       speed: {
         first: 5,
@@ -35,22 +35,22 @@ export default class CA {
     this.point.src = '/images/point.svg'
 
     this.drupal = new Image(this.iw, this.ih)
-    this.drupal.src = '/images/drupal.png'
+    this.drupal.src = '/images/drupal.svg'
 
     this.squarespace = new Image(this.iw, this.ih)
-    this.squarespace.src = '/images/squarespace.png'
+    this.squarespace.src = '/images/squarespace.svg'
 
     this.wix = new Image(this.iw, this.ih)
-    this.wix.src = '/images/wix.png'
+    this.wix.src = '/images/wix.svg'
 
     this.wordpress = new Image(this.iw, this.ih)
-    this.wordpress.src = '/images/wordpress.png'
+    this.wordpress.src = '/images/wordpress.svg'
 
     this.weebly = new Image(this.iw, this.ih)
-    this.weebly.src = '/images/weebly.png'
+    this.weebly.src = '/images/weebly.svg'
 
     this.shopify = new Image(this.iw, this.ih)
-    this.shopify.src = '/images/shopify.png'
+    this.shopify.src = '/images/shopify.svg'
   }
 
   set setCanvas({w, h}) {
@@ -97,7 +97,7 @@ export default class CA {
 
       this.ctx.drawImage(this.drupal,
         this.w / 2 - (5 + this.iw / 2 + 393 * Math.cos(this.opt.angle.drupal)),
-        (this.h / 2 + (20 - this.ih - 4) + 114 * Math.sin(this.opt.angle.drupal)),
+        (this.h / 2 + (20 - this.ih - 8) + 114 * Math.sin(this.opt.angle.drupal)),
         this.iw,
         this.ih)
 
@@ -113,7 +113,7 @@ export default class CA {
 
       this.ctx.drawImage(this.shopify,
         this.w / 2 - (5 + this.iw / 2 + 498 * Math.cos(this.opt.angle.shopify)),
-        (this.h / 2 + (20 - this.ih - 4) + 151 * Math.sin(this.opt.angle.shopify)),
+        (this.h / 2 + (20 - this.ih - 8) + 151 * Math.sin(this.opt.angle.shopify)),
         this.iw,
         this.ih)
 
@@ -126,7 +126,7 @@ export default class CA {
 
       this.ctx.drawImage(this.weebly,
         this.w / 2 - (5 + this.iw / 2 + 498 * Math.cos(this.opt.angle.weebly)),
-        (this.h / 2 + (20 - this.ih - 4) + 151 * Math.sin(this.opt.angle.weebly)),
+        (this.h / 2 + (20 - this.ih - 8) + 151 * Math.sin(this.opt.angle.weebly)),
         this.iw,
         this.ih)
 
@@ -139,7 +139,7 @@ export default class CA {
 
       this.ctx.drawImage(this.wix,
         this.w / 2 - (5 + this.iw / 2 + 498 * Math.cos(this.opt.angle.wix)),
-        (this.h / 2 + (20 - this.ih - 4) + 151 * Math.sin(this.opt.angle.wix)),
+        (this.h / 2 + (20 - this.ih - 8) + 151 * Math.sin(this.opt.angle.wix)),
         this.iw,
         this.ih)
 
@@ -155,7 +155,7 @@ export default class CA {
 
       this.ctx.drawImage(this.squarespace,
         this.w / 2 - (5 + this.iw / 2 + 600 * Math.cos(this.opt.angle.squarespace)),
-        (this.h / 2 + (20 - this.ih - 4) + 181 * Math.sin(this.opt.angle.squarespace)),
+        (this.h / 2 + (20 - this.ih - 8) + 181 * Math.sin(this.opt.angle.squarespace)),
         this.iw,
         this.ih)
 
@@ -168,7 +168,7 @@ export default class CA {
 
       this.ctx.drawImage(this.wordpress,
         this.w / 2 - (5 + this.iw / 2 + 600 * Math.cos(this.opt.angle.wordpress)),
-        (this.h / 2 + (20 - this.ih - 4) + 181 * Math.sin(this.opt.angle.wordpress)),
+        (this.h / 2 + (20 - this.ih - 8) + 181 * Math.sin(this.opt.angle.wordpress)),
         this.iw,
         this.ih)
 
@@ -183,8 +183,10 @@ export default class CA {
         this.point.height)
 
       this.ctx.drawImage(this.drupal,
-        -this.iw / 2 + this.w / 2 - ((5 + (393 * Math.cos(this.opt.angle.drupal))) * ((this.w - 80) / 1200)),
-        -(this.ih + 4) + (((this.h - 62) / 2) + 56) + ((8 + 105 * Math.sin(this.opt.angle.drupal)) * ((this.h - 62) / 376)),
+        -this.iw / 2 +
+        this.w / 2 - ((5 + (393 * Math.cos(this.opt.angle.drupal))) * ((this.w - 80) / 1200)),
+        -(this.ih + 4) +
+        (((this.h - 62) / 2) + 56) + ((-5 + 114 * Math.sin(this.opt.angle.drupal)) * ((this.h - 62) / 376)),
         this.iw,
         this.ih)
 
@@ -197,8 +199,10 @@ export default class CA {
         this.point.height)
 
       this.ctx.drawImage(this.shopify,
-        -this.iw / 2 + this.w / 2 - ((5 + (498 * Math.cos(this.opt.angle.shopify))) * ((this.w - 80) / 1200)),
-        -(this.ih + 4) + (((this.h - 62) / 2) + 56) + ((-5 + 151 * Math.sin(this.opt.angle.shopify)) * ((this.h - 62) / 376)),
+        -this.iw / 2 +
+        this.w / 2 - ((5 + (498 * Math.cos(this.opt.angle.shopify))) * ((this.w - 80) / 1200)),
+        -(this.ih + 4) +
+        (((this.h - 62) / 2) + 56) + ((-5 + 151 * Math.sin(this.opt.angle.shopify)) * ((this.h - 62) / 376)),
         this.iw,
         this.ih)
 
@@ -210,8 +214,10 @@ export default class CA {
         this.point.height)
 
       this.ctx.drawImage(this.weebly,
-        -this.iw / 2 + this.w / 2 - ((5 + (498 * Math.cos(this.opt.angle.weebly))) * ((this.w - 80) / 1200)),
-        -(this.ih + 4) + (((this.h - 62) / 2) + 56) + ((-5 + 151 * Math.sin(this.opt.angle.weebly)) * ((this.h - 62) / 376)),
+        -this.iw / 2 +
+        this.w / 2 - ((5 + (498 * Math.cos(this.opt.angle.weebly))) * ((this.w - 80) / 1200)),
+        -(this.ih + 4) +
+        (((this.h - 62) / 2) + 56) + ((-5 + 151 * Math.sin(this.opt.angle.weebly)) * ((this.h - 62) / 376)),
         this.iw,
         this.ih)
 
@@ -223,8 +229,10 @@ export default class CA {
         this.point.height)
 
       this.ctx.drawImage(this.wix,
-        -this.iw / 2 + this.w / 2 - ((5 + (498 * Math.cos(this.opt.angle.wix))) * ((this.w - 80) / 1200)),
-        -(this.ih + 4) + (((this.h - 62) / 2) + 56) + ((-5 + 151 * Math.sin(this.opt.angle.wix)) * ((this.h - 62) / 376)),
+        -this.iw / 2 +
+        this.w / 2 - ((5 + (498 * Math.cos(this.opt.angle.wix))) * ((this.w - 80) / 1200)),
+        -(this.ih + 4) +
+        (((this.h - 62) / 2) + 56) + ((-5 + 151 * Math.sin(this.opt.angle.wix)) * ((this.h - 62) / 376)),
         this.iw,
         this.ih)
 
@@ -238,8 +246,10 @@ export default class CA {
         this.point.height)
 
       this.ctx.drawImage(this.squarespace,
-        -this.iw / 2 + this.w / 2 - ((4 + (600 * Math.cos(this.opt.angle.squarespace))) * ((this.w - 80) / 1200)),
-        -(this.ih + 4) + (((this.h - 38) / 2) + 32) + ((-5 + 176 * Math.sin(this.opt.angle.squarespace)) * ((this.h - 38) / 376)),
+        -this.iw / 2 +
+        this.w / 2 - ((4 + (600 * Math.cos(this.opt.angle.squarespace))) * ((this.w - 80) / 1200)),
+        -(this.ih + 4) +
+        (((this.h - 38) / 2) + 32) + ((6 + 176 * Math.sin(this.opt.angle.squarespace)) * ((this.h - 38) / 376)),
         this.iw,
         this.ih)
 
@@ -251,8 +261,10 @@ export default class CA {
         this.point.height)
 
       this.ctx.drawImage(this.wordpress,
-        -this.iw / 2 + this.w / 2 - ((4 + (600 * Math.cos(this.opt.angle.wordpress))) * ((this.w - 80) / 1200)),
-        -(this.ih + 4) + (((this.h - 38) / 2) + 32) + ((-5 + 176 * Math.sin(this.opt.angle.wordpress)) * ((this.h - 38) / 376)),
+        -this.iw / 2 +
+        this.w / 2 - ((4 + (600 * Math.cos(this.opt.angle.wordpress))) * ((this.w - 80) / 1200)),
+        -(this.ih + 4) +
+        (((this.h - 38) / 2) + 32) + ((6 + 176 * Math.sin(this.opt.angle.wordpress)) * ((this.h - 38) / 376)),
         this.iw,
         this.ih)
 
@@ -269,7 +281,6 @@ export default class CA {
       this.ctx.drawImage(this.drupal,
         -this.iw / 2 +
         this.w / 2 - ((5 + (393 * Math.cos(this.opt.angle.drupal))) * ((this.w - 80) / 1200)),
-
         -(this.ih + 4) +
         (((this.h - 38) / 2) + 32) + ((7 + 106 * Math.sin(this.opt.angle.drupal)) * ((this.h - 38) / 376)),
         this.iw,

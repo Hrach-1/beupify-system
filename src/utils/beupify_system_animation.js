@@ -18,8 +18,8 @@ export default class CA {
         wordpress: 0.7 * Math.PI,
       },
       speed: {
-        first: 5,
-        second: 6,
+        first: 7,
+        second: 7,
         third: 7
       }
     }

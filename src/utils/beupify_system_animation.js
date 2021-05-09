@@ -3,7 +3,6 @@ export default class CA {
     this.c = canvas
     this.ctx = this.c.getContext('2d')
     this.opt = {
-      pts: 0,
       angle: {
         // 3
         drupal: -0.4 * Math.PI,
@@ -101,7 +100,6 @@ export default class CA {
         this.iw,
         this.ih)
 
-
       // 2
 
       // Shopify
@@ -142,7 +140,6 @@ export default class CA {
         (this.h / 2 + (20 - this.ih - 8) + 151 * Math.sin(this.opt.angle.wix)),
         this.iw,
         this.ih)
-
 
       // 3
 

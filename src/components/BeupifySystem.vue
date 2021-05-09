@@ -1,14 +1,46 @@
 <template>
   <div class="canvas-wrapper">
     <div class="canvas-container" ref="cc" id="cc">
+
+      <div id="logos">
+<!--        1-->
+        <div id="drupal">
+          <img src="/images/drupal.svg" alt="drupal" class="logo">
+          <img src="/images/point.svg" alt="" class="point">
+        </div>
+
+<!--        2-->
+        <div id="shopify">
+          <img src="/images/shopify.svg" alt="shopify" class="logo">
+          <img src="/images/point.svg" alt="" class="point">
+        </div>
+        <div id="wix">
+          <img src="/images/wix.svg" alt="wix" class="logo">
+          <img src="/images/point.svg" alt="" class="point">
+        </div>
+        <div id="weebly">
+          <img src="/images/weebly.svg" alt="weebly" class="logo">
+          <img src="/images/point.svg" alt="" class="point">
+        </div>
+
+<!--        3-->
+        <div id="wp">
+          <img src="/images/wordpress.svg" alt="wordpress" class="logo">
+          <img src="/images/point.svg" alt="" class="point">
+        </div>
+        <div id="ss">
+          <img src="/images/squarespace.svg" alt="squarespace" class="logo">
+          <img src="/images/point.svg" alt="" class="point">
+        </div>
+
+      </div>
       <img src="#" alt="bs" ref="bs" id="bs">
-      <canvas class="canvas" ref="canvas"></canvas>
     </div>
   </div>
 </template>
 
 <script>
-import CA from "../utils/beupify_system_animation";
+import CA from "../utils/bsa_v2";
 
 export default {
   name: "BeupifySystem",
@@ -29,23 +61,26 @@ export default {
 
     setTimeout(() => {
       let w, h
+
+      // Container Size
       if (window.innerWidth < 1280) {
         w = window.innerWidth - 2
       } else {
         w = cc.offsetWidth
       }
       h = cc.clientHeight
-      const canvas = this.$refs.canvas
-      canvas.width = w
-      canvas.height = h
-      this.ca = new CA(canvas, w, h)
-      if (window.innerWidth < 1024 && window.innerWidth >= 768) {
-        this.ca.setImageSizes = {w: 90, h: 28}
-      } else if(window.innerWidth < 768) {
-        this.ca.setImageSizes = {w: 76, h: 24}
+
+      this.ca = new CA(w, h)
+
+      // Logo size
+      if (window.innerWidth < 768) {
+        this.ca.setImageSize = {w: 76, h: 34}
+      } else if (window.innerWidth < 1024){
+        this.ca.setImageSize = {w: 90, h: 40}
       } else {
-        this.ca.setImageSizes = {w: 150, h: 48}
+        this.ca.setImageSize = {w: 150, h: 48}
       }
+
       this.ca.animate()
     }, 50)
 
@@ -59,20 +94,28 @@ export default {
       setTimeout(() => {
         const bs = document.querySelector('#bs')
         const cc = document.querySelector('#cc')
+
+        // Container size
         if (window.innerWidth < 1280) {
-          this.ca.setCanvas = {w: window.innerWidth - 2, h: cc.offsetHeight}
+          this.ca.setSizes = {w: window.innerWidth - 2, h: cc.offsetHeight}
         } else {
-          this.ca.setCanvas = {w: cc.offsetWidth, h: cc.offsetHeight}
+          this.ca.setSizes = {w: cc.offsetWidth, h: cc.offsetHeight}
         }
+
+        // BS size
         if (window.innerWidth < 768) {
           bs.src = this.xs
         } else {
           bs.src = this.l
         }
-        if (window.innerWidth < 1024) {
-          this.ca.setImageSizes = {w: 74, h: 24}
+
+        // Logo size
+        if (window.innerWidth < 768) {
+          this.ca.setImageSize = {w: 76, h: 34}
+        } else if (window.innerWidth < 1024){
+          this.ca.setImageSize = {w: 90, h: 40}
         } else {
-          this.ca.setImageSizes = {w: 150, h: 48}
+          this.ca.setImageSize = {w: 150, h: 48}
         }
       }, 50)
     }
@@ -105,12 +148,38 @@ export default {
   margin: auto;
 }
 
-.canvas {
+.canvas, #logos {
   position: absolute;
   top: 0;
   left: calc((100% - 1280px) / 2);
 }
 
+#logos {
+  outline:3px solid red;
+  width: 100%;
+  /*height:436px;*/
+}
+
+#logos > div {
+  display: inline-block;
+  position: absolute;
+}
+
+#logos .logo {
+  width: 150px;
+}
+
+#logos .point {
+  width: 8px;
+  display: flex;
+  margin-top: 4px;
+}
+
+#drupal {
+  /*transform: translate(200px);*/
+  /*background-color: red;*/
+  /*outline: 3px solid white;*/
+}
 
 @media only screen and (max-width: 1279px) {
   .canvas {

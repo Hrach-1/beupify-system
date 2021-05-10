@@ -2,14 +2,14 @@
   <div class="canvas-wrapper">
     <div class="canvas-container" ref="cc" id="cc">
 
-      <div id="logos">
-<!--        1-->
+      <div id="logos" ref="logos">
+        <!--        1-->
         <div id="drupal">
           <img src="/images/drupal.svg" alt="drupal" class="logo">
           <img src="/images/point.svg" alt="" class="point">
         </div>
 
-<!--        2-->
+        <!--        2-->
         <div id="shopify">
           <img src="/images/shopify.svg" alt="shopify" class="logo">
           <img src="/images/point.svg" alt="" class="point">
@@ -23,7 +23,7 @@
           <img src="/images/point.svg" alt="" class="point">
         </div>
 
-<!--        3-->
+        <!--        3-->
         <div id="wp">
           <img src="/images/wordpress.svg" alt="wordpress" class="logo">
           <img src="/images/point.svg" alt="" class="point">
@@ -45,13 +45,14 @@ import CA from "../utils/bsa_v2";
 export default {
   name: "BeupifySystem",
   data: () => ({
-    l: '/images/beupify_system_l.svg',
-    xs: '/images/beupify_system_xs.svg'
+    l: '/images/bs_l.svg',
+    xs: '/images/bs_xs.svg'
   }),
   mounted() {
     // BS
     const bs = this.$refs.bs
     const cc = this.$refs.cc
+    const logos = this.$refs.logos
 
     if (window.innerWidth < 768) {
       bs.src = this.xs
@@ -64,19 +65,20 @@ export default {
 
       // Container Size
       if (window.innerWidth < 1280) {
-        w = window.innerWidth - 2
+        w = window.innerWidth
       } else {
         w = cc.offsetWidth
       }
       h = cc.clientHeight
-
+      logos.style.width = w + 'px'
+      logos.style.height = h + 'px'
       this.ca = new CA(w, h)
 
       // Logo size
       if (window.innerWidth < 768) {
-        this.ca.setImageSize = {w: 76, h: 34}
-      } else if (window.innerWidth < 1024){
-        this.ca.setImageSize = {w: 90, h: 40}
+        this.ca.setImageSize = {w: 76, h: 24}
+      } else if (window.innerWidth < 1024) {
+        this.ca.setImageSize = {w: 90, h: 28}
       } else {
         this.ca.setImageSize = {w: 150, h: 48}
       }
@@ -97,7 +99,7 @@ export default {
 
         // Container size
         if (window.innerWidth < 1280) {
-          this.ca.setSizes = {w: window.innerWidth - 2, h: cc.offsetHeight}
+          this.ca.setSizes = {w: window.innerWidth, h: cc.offsetHeight}
         } else {
           this.ca.setSizes = {w: cc.offsetWidth, h: cc.offsetHeight}
         }
@@ -111,9 +113,9 @@ export default {
 
         // Logo size
         if (window.innerWidth < 768) {
-          this.ca.setImageSize = {w: 76, h: 34}
-        } else if (window.innerWidth < 1024){
-          this.ca.setImageSize = {w: 90, h: 40}
+          this.ca.setImageSize = {w: 76, h: 24}
+        } else if (window.innerWidth < 1024) {
+          this.ca.setImageSize = {w: 90, h: 28}
         } else {
           this.ca.setImageSize = {w: 150, h: 48}
         }
@@ -124,87 +126,90 @@ export default {
 </script>
 
 <style scoped>
-.canvas-wrapper {
-  margin: 0;
-  display: flex;
-}
 
-.canvas-container {
-  box-sizing: border-box;
-  display: flex;
-  margin: 0 auto;
-  max-width: 1280px;
-  width: 100%;
-  position: relative;
-  background-color: #1E1939;
-  padding: 56px 6px 6px 6px;
-}
+/*@media only screen and (max-width: 1279px) {*/
 
-.canvas-container img {
-  max-width: 1200px;
-  max-height: 376px;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-}
+/*  .canvas-container {*/
+/*    padding: 56px 0 6px 0;*/
+/*    position: static;*/
+/*  }*/
 
-.canvas, #logos {
-  position: absolute;
-  top: 0;
-  left: calc((100% - 1280px) / 2);
-}
+/*  .canvas-wrapper {*/
+/*    padding: 0 40px;*/
+/*    position: relative;*/
+/*    background-color: #1E1939;*/
+/*  }*/
+/*}*/
 
-#logos {
-  outline:3px solid red;
-  width: 100%;
-  /*height:436px;*/
-}
+/*@media only screen and (max-width: 1023px) {*/
+/*  .canvas-container {*/
+/*    padding: 32px 0 6px 0;*/
+/*  }*/
 
-#logos > div {
-  display: inline-block;
-  position: absolute;
-}
+/*  .canvas-wrapper {*/
+/*    padding: 0 16px;*/
+/*  }*/
+/*}*/
 
-#logos .logo {
-  width: 150px;
-}
-
-#logos .point {
-  width: 8px;
-  display: flex;
-  margin-top: 4px;
-}
-
-#drupal {
-  /*transform: translate(200px);*/
-  /*background-color: red;*/
-  /*outline: 3px solid white;*/
-}
-
-@media only screen and (max-width: 1279px) {
-  .canvas {
-    left: 0;
-  }
-
+@media only screen and (min-width: 360px) {
   .canvas-container {
-    padding: 56px 0 6px 0;
-    position: static;
-  }
-
-  .canvas-wrapper {
-    padding: 0 40px;
-    position: relative;
-    background-color: #1E1939;
-  }
-}
-
-@media only screen and (max-width: 1023px) {
-  .canvas-container {
-    padding: 32px 0 6px 0;
+    padding: 34px 0 6px 0;
+    outline: 3px solid blue;
   }
 
   .canvas-wrapper {
     padding: 0 16px;
+    outline: 3px solid green;
+  }
+
+  #logos {
+    outline: 1px solid red;
+  }
+
+  #logos > div {
+    display: inline-block;
+    position: absolute;
+  }
+
+  #logos .point {
+    width: 6px;
+    display: flex;
+    margin-top: 4px;
+  }
+
+  #drupal {
+    /*transform: translate(200px);*/
+    /*background-color: red;*/
+    /*outline: 3px solid white;*/
+  }
+
+  #logos {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .canvas-wrapper {
+    margin: 0;
+    display: flex;
+    background-color: #1E1939;
+  }
+
+  .canvas-container {
+    box-sizing: border-box;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 100%;
+    background-color: #1E1939;
+  }
+
+  .canvas-container img {
+    max-width: 1200px;
+    max-height: 376px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
   }
 }
 

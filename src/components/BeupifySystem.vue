@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import CA from "../utils/bsa_v2";
+import CA from "../utils/bsa";
 
 export default {
   name: "BeupifySystem",
@@ -49,7 +49,7 @@ export default {
     xs: '/images/bs_xs.svg'
   }),
   mounted() {
-    // BS
+    // bs
     const bs = this.$refs.bs
     const cc = this.$refs.cc
     const logos = this.$refs.logos
@@ -63,7 +63,7 @@ export default {
     setTimeout(() => {
       let w, h
 
-      // Container Size
+      // container size
       if (window.innerWidth < 1280) {
         w = window.innerWidth
       } else {
@@ -74,7 +74,7 @@ export default {
       logos.style.height = h + 'px'
       this.ca = new CA(w, h)
 
-      // Logo size
+      // logo size
       if (window.innerWidth < 768) {
         this.ca.setImageSize = {w: 76, h: 24}
       } else if (window.innerWidth < 1024) {
@@ -97,21 +97,21 @@ export default {
         const bs = document.querySelector('#bs')
         const cc = document.querySelector('#cc')
 
-        // Container size
+        // container size
         if (window.innerWidth < 1280) {
           this.ca.setSizes = {w: window.innerWidth, h: cc.offsetHeight}
         } else {
           this.ca.setSizes = {w: cc.offsetWidth, h: cc.offsetHeight}
         }
 
-        // BS size
+        // bs size
         if (window.innerWidth < 768) {
           bs.src = this.xs
         } else {
           bs.src = this.l
         }
 
-        // Logo size
+        // logo size
         if (window.innerWidth < 768) {
           this.ca.setImageSize = {w: 76, h: 24}
         } else if (window.innerWidth < 1024) {
@@ -127,45 +127,7 @@ export default {
 
 <style scoped>
 
-/*@media only screen and (max-width: 1279px) {*/
-
-/*  .canvas-container {*/
-/*    padding: 56px 0 6px 0;*/
-/*    position: static;*/
-/*  }*/
-
-/*  .canvas-wrapper {*/
-/*    padding: 0 40px;*/
-/*    position: relative;*/
-/*    background-color: #1E1939;*/
-/*  }*/
-/*}*/
-
-/*@media only screen and (max-width: 1023px) {*/
-/*  .canvas-container {*/
-/*    padding: 32px 0 6px 0;*/
-/*  }*/
-
-/*  .canvas-wrapper {*/
-/*    padding: 0 16px;*/
-/*  }*/
-/*}*/
-
 @media only screen and (min-width: 360px) {
-  .canvas-container {
-    padding: 34px 0 6px 0;
-    outline: 3px solid blue;
-  }
-
-  .canvas-wrapper {
-    padding: 0 16px;
-    outline: 3px solid green;
-  }
-
-  #logos {
-    outline: 1px solid red;
-  }
-
   #logos > div {
     display: inline-block;
     position: absolute;
@@ -175,12 +137,6 @@ export default {
     width: 6px;
     display: flex;
     margin-top: 4px;
-  }
-
-  #drupal {
-    /*transform: translate(200px);*/
-    /*background-color: red;*/
-    /*outline: 3px solid white;*/
   }
 
   #logos {
@@ -193,6 +149,8 @@ export default {
     margin: 0;
     display: flex;
     background-color: #1E1939;
+    position: relative;
+    padding: 0 16px;
   }
 
   .canvas-container {
@@ -202,6 +160,7 @@ export default {
     max-width: 1280px;
     width: 100%;
     background-color: #1E1939;
+    padding: 34px 0 6px 0;
   }
 
   .canvas-container img {
@@ -213,5 +172,40 @@ export default {
   }
 }
 
+/*==============*/
+
+@media only screen and (min-width: 768px) {
+  .canvas-container {
+    padding: 38px 0 6px 0;
+  }
+
+  #logos .point {
+    width: 8px;
+  }
+}
+
+/*==============*/
+
+@media only screen and (min-width: 1024px) {
+  .canvas-container {
+    padding: 58px 0 6px 0;
+  }
+
+  .canvas-wrapper {
+    padding: 0 40px;
+  }
+}
+
+/*==============*/
+
+@media only screen and (min-width: 1280px) {
+  .canvas-wrapper {
+    position: static;
+  }
+
+  .canvas-container {
+    position: relative;
+  }
+}
 
 </style>

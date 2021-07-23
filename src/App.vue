@@ -1,5 +1,6 @@
 <template>
   <BeupifySystem/>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, iste!</p>
 </template>
 
 <script>
